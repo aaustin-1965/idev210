@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>IDEV210 Lab 1. First AngularJS 1.5.3 Application</title>
+        <!-- Import the AngularJS framework -->
+        <script src="angular/angular.min.js"></script>
+    </head>
+    <body ng-app="MyApp" ng-controller="MyController">
+        <h1>First AngularJS Application</h1>
+        {{ greeting }}
+        <script>
+           var myapp = angular.module('MyApp', []);
+           myapp.controller('MyController', function($scope) {
+               $scope.greeting = 'Hello World!'
+           });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>IDEV210 Lab 2. First AngularJS Material 1.0.7 Application</title>
+
+	<link rel="stylesheet" type="text/css" href="angular-material/angular-material.min.css">
+
+	<script src="angular/angular.min.js"></script>
+	<script src="angular-animate/angular-animate.js"></script>
+	<script src="angular-aria/angular-aria.min.js"></script>
+	<script src="angular-messages/angular-messages.min.js"></script>
+	<script src="angular-material/angular-material.min.js"></script>
+
+	<script src="myApplicationController.js"></script>
+
+</head>
+
+<body ng-app="MyApp" ng-controller="MyController">
+	<form name="cidrForm">
+		<h1>CIDR Form</h1>
+		<p>Required fields are marked by <abbr title="required" aria-label="required">*</abbr>.</p>
+		<section>
+			<md-input-container>
+				<p>
+					<label for="cidrInput">CIDR String: <abbr title="required" aria-label="required">*</abbr></label>
+					<input type="text"
+                   id="cidrInput"
+                   name="cidrStr"
+                   ng-model="cidrStr"
+                   required
+                   placeholder="ex. 10.10.10.0/24"
+                   minlength="9"
+                   md-maxlength="18"
+                   ng-pattern=cidrRegex>
+          </p>
+					<p>
+						<div ng-messages="cidrForm.cidrStr.$error">
+							<div ng-message="required">Required</div>
+							<div ng-message="minlength">Too short.</div>
+							<div ng-message="md-maxlength">Too long.</div>
+							<div ng-message="pattern">Must be a valid IPv4 CIDR</div>
+						</div>
+					</p>
+			</md-input-container>
+      <p>
+        <pre>cidrForm.cidrStr.$error = {{ cidrForm.cidrStr.$error | json }}</pre>
+      </p>      
+		</section>
+	</form>
+</body>
+
+</html>
